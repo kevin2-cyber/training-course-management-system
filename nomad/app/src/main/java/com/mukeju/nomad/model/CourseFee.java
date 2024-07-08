@@ -1,8 +1,8 @@
 package com.mukeju.nomad.model;
 
 public class CourseFee {
-    private Integer courseFeeNo;
+    private int courseFeeNo;
     private String feeDescription;
     private String fee;
-    private Integer courseNo;
+    private int courseNo;
 }
