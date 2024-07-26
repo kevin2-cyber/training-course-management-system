@@ -9,5 +9,4 @@ public class UserActivityLog {
     private String tableName;
     private int recordId;
     private LocalDateTime actionDate;
-
 }

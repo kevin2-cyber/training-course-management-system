@@ -12,7 +12,7 @@ public class Course {
     private LocalDateTime startTime;
     private LocalDateTime endTime;
     private int maxDelegates;
-    private Boolean confirmed;
+    private boolean confirmed;
     private int delivererEmployeeNo;
     private int courseTypeNo;
 }
