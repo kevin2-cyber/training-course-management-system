@@ -1,10 +1,13 @@
 package com.kimikevin.nomad_backend.model;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.sql.Date;
 
-
+@Getter
+@Setter
 @Entity
 @Table(name = "invoice")
 public class Invoice {

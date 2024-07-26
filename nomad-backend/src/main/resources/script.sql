@@ -20,6 +20,10 @@ CREATE TABLE Client (
     clientPhone VARCHAR2(20)
 );
 
+-- INSERT INTO CLIENT (clientNo, clientName, clientAddress, clientPhone) VALUES (seq_client_no.NEXTVAL, 'Abena', 'Accra', '0244055715');
+--
+-- SELECT * FROM CLIENT;
+
 -- Employee table (added as it's referenced by multiple tables)
 CREATE TABLE Employee (
     employeeNo NUMBER PRIMARY KEY,

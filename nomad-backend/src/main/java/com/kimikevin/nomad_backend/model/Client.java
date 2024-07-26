@@ -20,10 +20,12 @@ public class Client {
     @Column
     private String clientPhone;
 
-    @Column(unique = true, nullable = false)
-    private String clientEmail;
+    public Client() {}
 
-    @Column(nullable = false)
-    private String clientPassword;
-
+    public Client(Long clientNo, String clientName, String clientAddress, String clientPhone) {
+        this.clientNo = clientNo;
+        this.clientName = clientName;
+        this.clientAddress = clientAddress;
+        this.clientPhone = clientPhone;
+    }
 }

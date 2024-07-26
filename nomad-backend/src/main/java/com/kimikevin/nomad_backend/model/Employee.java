@@ -20,7 +20,4 @@ public class Employee {
     private String employeeEmail;
     @Column
     private String employeePhone;
-
-    @Column(nullable = false)
-    private String employeePassword;
 }

@@ -5,13 +5,9 @@ import lombok.*;
 
 import java.sql.Date;
 
-@Entity
-@Getter
 @Setter
-@ToString
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
+@Getter
+@Entity
 @Table(name = "booking")
 public class Booking {
     @Id
