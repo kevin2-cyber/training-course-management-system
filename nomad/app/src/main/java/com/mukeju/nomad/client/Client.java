@@ -1,4 +1,4 @@
-package com.mukeju.nomad.model;
+package com.mukeju.nomad.client;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.BaseObservable;

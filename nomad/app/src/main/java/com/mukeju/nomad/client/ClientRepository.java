@@ -1,11 +1,9 @@
-package com.mukeju.nomad.model.repository;
+package com.mukeju.nomad.client;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.mukeju.nomad.model.ClientList;
-import com.mukeju.nomad.model.service.ClientService;
-import com.mukeju.nomad.model.service.RetrofitInstance;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -24,20 +22,20 @@ public class ClientRepository {
                 .create(ClientService.class);
     }
 
-    public LiveData<ClientList> getClientLiveData() {
-        MutableLiveData<ClientList> data = new MutableLiveData<>();
-        Call<ClientList> response = clientService.getClients();
+    public LiveData<List<Client>> getClientLiveData() {
+        MutableLiveData<List<Client>> data = new MutableLiveData<>();
+        Call<List<Client>> response = clientService.getClients();
         // to perform network request in the background thread and
         // handle the response in the main (UI) thread.
-        response.enqueue(new Callback<ClientList>() {
+        response.enqueue(new Callback<>() {
             @Override
-            public void onResponse(Call<ClientList> call, Response<ClientList> response) {
-                ClientList list = response.body();
+            public void onResponse(Call<List<Client>> call, Response<List<Client>> response) {
+                List<Client> list = response.body();
                 data.setValue(list);
             }
 
             @Override
-            public void onFailure(Call<ClientList> call, Throwable throwable) {
+            public void onFailure(Call<List<Client>> call, Throwable throwable) {
 
             }
         });
