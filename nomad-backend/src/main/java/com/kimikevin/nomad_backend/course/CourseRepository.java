@@ -1,6 +1,5 @@
-package com.kimikevin.nomad_backend.repository;
+package com.kimikevin.nomad_backend.course;
 
-import com.kimikevin.nomad_backend.model.Course;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface CourseRepository extends JpaRepository<Course, Long> {}

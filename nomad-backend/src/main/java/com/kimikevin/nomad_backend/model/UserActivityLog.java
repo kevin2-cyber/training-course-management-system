@@ -1,29 +1,111 @@
 package com.kimikevin.nomad_backend.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import lombok.Getter;
-import lombok.Setter;
+import jakarta.persistence.*;
 
 import java.sql.Date;
 
-@Getter
-@Setter
 @Entity
 @Table(name = "useractivitylog")
 public class UserActivityLog {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long logId;
-    @Column
+    @Column(name = "userId")
     private String userId;
-    @Column
+    @Column(name = "actionType")
     private String actionType;
-    @Column
+    @Column(name = "tableName")
     private String tableName;
-    @Column
+    @Column(name = "recordId")
     private Long recordId;
-    @Column
-    private Date actionDate = new Date(System.currentTimeMillis());
+    @Column(name = "actionDate")
+    private Date actionDate;
+
+    public UserActivityLog() {}
+
+    public UserActivityLog(String userId,
+                           String actionType,
+                           String tableName,
+                           Long recordId,
+                           Date actionDate) {
+        this.userId = userId;
+        this.actionType = actionType;
+        this.tableName = tableName;
+        this.recordId = recordId;
+        this.actionDate = actionDate;
+    }
+
+    public UserActivityLog(Long logId,
+                           String userId,
+                           String actionType,
+                           String tableName,
+                           Long recordId,
+                           Date actionDate) {
+        this.logId = logId;
+        this.userId = userId;
+        this.actionType = actionType;
+        this.tableName = tableName;
+        this.recordId = recordId;
+        this.actionDate = actionDate;
+    }
+
+    public Long getLogId() {
+        return logId;
+    }
+
+    public void setLogId(Long logId) {
+        this.logId = logId;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getActionType() {
+        return actionType;
+    }
+
+    public void setActionType(String actionType) {
+        this.actionType = actionType;
+    }
+
+    public String getTableName() {
+        return tableName;
+    }
+
+    public void setTableName(String tableName) {
+        this.tableName = tableName;
+    }
+
+    public Long getRecordId() {
+        return recordId;
+    }
+
+    public void setRecordId(Long recordId) {
+        this.recordId = recordId;
+    }
+
+    public Date getActionDate() {
+        return actionDate;
+    }
+
+    public void setActionDate(Date actionDate) {
+        this.actionDate = actionDate;
+    }
+
+    @Override
+    public String toString() {
+        return "UserActivityLog{" +
+                "logId=" + logId +
+                ", userId='" + userId + '\'' +
+                ", actionType='" + actionType + '\'' +
+                ", tableName='" + tableName + '\'' +
+                ", recordId=" + recordId +
+                ", actionDate=" + actionDate +
+                '}';
+    }
 }
