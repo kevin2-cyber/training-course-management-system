@@ -1,4 +1,3 @@
 package com.mukeju.nomad.model;
 
-public class CourseType {
-}
+public record CourseType(int courseTypeNo, String courseTypeDescription) {}
