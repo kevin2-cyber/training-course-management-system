@@ -1,5 +1,6 @@
 package com.mukeju.nomad.client;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
@@ -22,20 +23,20 @@ public class ClientRepository {
                 .create(ClientService.class);
     }
 
-    public LiveData<List<Client>> getClientLiveData() {
-        MutableLiveData<List<Client>> data = new MutableLiveData<>();
-        Call<List<Client>> response = clientService.getClients();
+    public LiveData<ClientList> getClientLiveData() {
+        MutableLiveData<ClientList> data = new MutableLiveData<>();
+        Call<ClientList> response = clientService.getClients();
         // to perform network request in the background thread and
         // handle the response in the main (UI) thread.
         response.enqueue(new Callback<>() {
             @Override
-            public void onResponse(Call<List<Client>> call, Response<List<Client>> response) {
-                List<Client> list = response.body();
+            public void onResponse(@NonNull Call<ClientList> call, @NonNull Response<ClientList> response) {
+                ClientList list = response.body();
                 data.setValue(list);
             }
 
             @Override
-            public void onFailure(Call<List<Client>> call, Throwable throwable) {
+            public void onFailure(@NonNull Call<ClientList> call, @NonNull Throwable throwable) {
 
             }
         });

@@ -1,18 +1,16 @@
-package com.mukeju.nomad;
+package com.mukeju.nomad.client;
 
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.DiffUtil;
-
-import com.mukeju.nomad.client.Client;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
 public class ClientDiffCallback extends DiffUtil.Callback {
-    ArrayList<Client> oldClients;
-    ArrayList<Client> newClients;
+    ClientList oldClients;
+    ClientList newClients;
 
-    public ClientDiffCallback(ArrayList<Client> oldClients, ArrayList<Client> newClients) {
+    public ClientDiffCallback(ClientList oldClients, ClientList newClients) {
         this.oldClients = oldClients;
         this.newClients = newClients;
     }
