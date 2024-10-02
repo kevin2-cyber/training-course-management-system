@@ -4,9 +4,6 @@ import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -14,13 +11,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mukeju.nomad.client.Client;
+import com.mukeju.nomad.client.ClientList;
+import com.mukeju.nomad.client.ClientRVAdapter;
 import com.mukeju.nomad.client.viewmodel.ClientViewModel;
 import com.mukeju.nomad.databinding.ActivityMainBinding;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    private ArrayList<Client> clients;
+    private List<Client> clients;
     private RecyclerView recyclerView;
     private ClientRVAdapter clientRVAdapter;
     private ActivityMainBinding mainBinding;
@@ -29,18 +28,20 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
+//        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
         mainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         viewModel = new ViewModelProvider(this).get(ClientViewModel.class);
 
         getAllClients();
+        mainBinding.swipeToRefresh.setColorSchemeResources(R.color.black);
+        mainBinding.swipeToRefresh.setOnRefreshListener(this::getAllClients);
     }
 
     private void getAllClients() {
         viewModel.getClientListLiveData().observe(this, clientLiveData -> {
-            clients = (ArrayList<Client>) clientLiveData;
+            clients = clientLiveData;
             displayClientInRV();
         });
     }
@@ -53,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         clientRVAdapter = new ClientRVAdapter(this);
         recyclerView.setAdapter(clientRVAdapter);
 
-        clientRVAdapter.setClients(clients);
+        clientRVAdapter.setClients((ClientList) clients);
 
         clientRVAdapter.notifyDataSetChanged();
     }

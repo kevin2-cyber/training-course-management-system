@@ -38,6 +38,8 @@ dependencies {
     implementation libs.material
     implementation libs.activity
     implementation libs.constraintlayout
+    // swipe-to-refresh layout
+    implementation libs.swiperefreshlayout
     // retrofit
     implementation libs.retrofit
     implementation libs.converter.gson

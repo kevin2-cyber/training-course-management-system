@@ -1,4 +1,4 @@
-package com.mukeju.nomad;
+package com.mukeju.nomad.client;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,14 +9,14 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.mukeju.nomad.client.Client;
+import com.mukeju.nomad.R;
 import com.mukeju.nomad.databinding.ClientItemBinding;
 
 import java.util.ArrayList;
 
 public class ClientRVAdapter extends RecyclerView.Adapter<ClientRVAdapter.ClientVH> {
     private final Context context;
-    private ArrayList<Client> clientArrayList;
+    private ClientList clientArrayList;
 
     public ClientRVAdapter(Context context) {
         this.context = context;
@@ -34,7 +34,7 @@ public class ClientRVAdapter extends RecyclerView.Adapter<ClientRVAdapter.Client
         return new ClientVH(clientItemBinding);
     }
 
-    public void setClients(ArrayList<Client> newClients) {
+    public void setClients(ClientList newClients) {
         final DiffUtil.DiffResult result =
                 DiffUtil.calculateDiff(new ClientDiffCallback(clientArrayList, newClients), false);
         clientArrayList = newClients;

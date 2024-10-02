@@ -7,7 +7,7 @@ public class RetrofitInstance {
     // Acts as a central configuration point
     // for defining how HTTP requests and responses
     // should be handled.
-    String clientUrl = "http://10.11.41.250:4000/api/";
+    String clientUrl = "http://192.168.8.112:4000/";
 
     public Retrofit getRetrofitInstance() {
      return new Retrofit.Builder()
